@@ -1,0 +1,24 @@
+mutation RegisterUser($displayName: String!, $email: String!, $password: String!, $uid: String!) @auth(level: PUBLIC, insecureReason: "This operation is safe to expose to the public") {
+  user_insert(data: {displayName: $displayName, email: $email, password: $password, uid: $uid})
+}
+
+query GetUserByUid($uid: String!) @auth(level: USER_ANON, insecureReason: "This operation is safe to expose to all logged in users.") {
+  users(where: {uid: {eq: $uid}}) {
+    id
+    displayName
+    email
+    highScore
+    uid
+  }
+}
+
+mutation UpdateHighScore($id: UUID!, $highScore: Int!) @auth(level: USER, insecureReason: "This operation is safe to expose to all logged in users.") {
+  user_update(id: $id, data: {highScore: $highScore})
+}
+
+query ListTopScorers @auth(level: PUBLIC, insecureReason: "This operation is safe to expose to the public") {
+  topScorers(orderBy: [{highScore: DESC}], limit: 10) {
+    displayName
+    highScore
+  }
+}

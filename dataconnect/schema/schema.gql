@@ -1,0 +1,13 @@
+type User @table {
+  uid: String!
+  email: String!
+  password: String!
+  displayName: String!
+  highScore: Int
+}
+
+type TopScorer @table {
+  uid: String!
+  displayName: String!
+  highScore: Int!
+}

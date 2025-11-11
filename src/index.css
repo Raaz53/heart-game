@@ -1,0 +1,153 @@
+
+:root {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+  font-weight: 400;
+
+  /* Prefer a light modern look */
+  color: #1f2937;
+  background: linear-gradient(to bottom right, #eef2ff, #f8fafc);
+
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  min-width: 320px;
+  background: inherit;
+}
+
+#root {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1e3a8a;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  font-size: 1.75rem;
+  color: #374151;
+  margin-bottom: 0.75rem;
+}
+
+p {
+  color: #4b5563;
+  margin: 0.5rem 0 1rem;
+  max-width: 60ch;
+  text-align: center;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.7em 1.5em ;
+  margin: 20px 10px 20px 0;
+
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #4f46e5;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.25s, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: #4338ca;
+  transform: scale(1.03);
+}
+
+button:focus,
+button:focus-visible {
+  outline: 3px solid #6366f1;
+  outline-offset: 2px;
+}
+
+.card {
+  background-color: #ffffff;
+  border-radius: 1rem;
+  padding: 2rem;
+  margin: 1rem 0;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 600px;
+  text-align: center;
+}
+
+a {
+  color: #4f46e5;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+a:hover {
+  color: #312e81;
+}
+
+input,
+textarea {
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 0.6em 1em;
+  margin: 0rem 0.5rem 1rem 0.5rem;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  outline: none;
+  width: 100%;
+  max-width: 300px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input:focus,
+textarea:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+}
+
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color: #e5e7eb;
+    background: linear-gradient(to bottom right, #1f2937, #111827);
+  }
+
+  .card {
+    background-color: #1f2937;
+    box-shadow: 0 8px 16px rgba(255, 255, 255, 0.05);
+  }
+
+  button {
+    background-color: #4f46e5;
+  }
+
+  input {
+    background-color: #111827;
+    color: #e5e7eb;
+    border-color: #374151;
+  }
+
+  a {
+    color: #818cf8;
+  }
+  a:hover {
+    color: #a5b4fc;
+  }
+}

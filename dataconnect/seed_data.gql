@@ -1,0 +1,32 @@
+mutation CreateSeedData @auth(level: NO_ACCESS) @transaction {
+  user_insertMany(data: [
+    {
+      id: "550e8400-e29b-41d4-a716-446655440000",
+      displayName: "demouser1",
+      email: "demouser1@example.com",
+      password: "password1",
+      uid: "uid1"
+    },
+    {
+      id: "550e8400-e29b-41d4-a716-446655440001",
+      displayName: "demouser2",
+      email: "demouser2@example.com",
+      password: "password2",
+      uid: "uid2"
+    }
+  ])
+  topScorer_insertMany(data: [
+    {
+      id: "650e8400-e29b-41d4-a716-446655440000",
+      displayName: "topscoreuser1",
+      highScore: 1000,
+      uid: "uid1"
+    },
+    {
+      id: "650e8400-e29b-41d4-a716-446655440001",
+      displayName: "topscoreuser2",
+      highScore: 2000,
+      uid: "uid2"
+    }
+  ])
+}

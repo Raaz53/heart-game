@@ -1,0 +1,65 @@
+/* Center content and improve layout balance */
+
+#root {
+  /* Make it fill the full viewport and center content */
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Optional: subtle background gradient for nicer look */
+  background: linear-gradient(to bottom right, #eef2ff, #f8fafc);
+
+  /* Limit content width and add balanced padding */
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+/* Optional: logo adjustments if you're using Vite's default logo */
+.logo {
+  height: 5em;
+  padding: 1em;
+  transition: filter 300ms, transform 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 1.5em #646cffaa);
+  transform: scale(1.05);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 1.5em #61dafbaa);
+}
+
+/* Clean up card appearance */
+.card {
+  padding: 1.5rem;
+  border-radius: 1rem;
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  margin: 1rem auto;
+  max-width: 600px;
+}
+
+/* For text or small info */
+.read-the-docs {
+  color: #666;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+}
+
+/* Keep logo spin for fun */
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
