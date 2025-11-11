@@ -7,6 +7,7 @@ import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { auth, db } from "../utils/firebase";
 import { doc, getDoc, updateDoc, runTransaction } from "firebase/firestore";
+import { signOut } from "firebase/auth";
 
 export default function Game() {
   const [question, setQuestion] = useState(null);
@@ -216,16 +217,46 @@ export default function Game() {
     }
   }, []);
 
+  // logout handler: sign out, clear local state and navigate to /signin (replace history)
+  async function handleLogout() {
+    try {
+      await signOut(auth);
+    } catch (e) {
+      // ignore signOut failures but continue cleanup
+      // eslint-disable-next-line no-console
+      console.warn("signOut failed:", e);
+    }
+
+    // clear local session state
+    try {
+      localStorage.removeItem("streak");
+      localStorage.removeItem("highScore");
+      localStorage.removeItem("lastQuestion");
+    } catch {}
+
+    // navigate to signin and replace history entry so back won't return to game
+    // using location.replace ensures the browser history entry is replaced
+    window.location.replace(`${window.location.origin}/signin`);
+  }
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 py-12 px-4">
       <div className="w-full max-w-xl bg-white rounded-2xl shadow-2xl p-8 sm:p-10 flex flex-col items-center text-center">
         {/* Header */}
         <div className="w-full flex flex-col sm:flex-row justify-between items-center mb-8">
           <h2 className="text-3xl font-bold text-indigo-700">Heart Game</h2>
-          <div className="text-sm text-gray-600 mt-2 sm:mt-0">
-            User: <span className="font-medium">{profile?.display_name || user?.username || "guest"}</span> | Score:{" "}
-            <span className="font-semibold text-indigo-600">{streak}</span> | High:{" "}
-            <span className="font-semibold text-indigo-600">{highScore}</span>
+          <div className="flex items-center gap-4 text-sm text-gray-600 mt-2 sm:mt-0">
+            <div>
+              User: <span className="font-medium">{profile?.display_name || user?.username || "guest"}</span> | Score:{" "}
+              <span className="font-semibold text-indigo-600">{streak}</span> | High:{" "}
+              <span className="font-semibold text-indigo-600">{highScore}</span>
+            </div>
+            <button
+              onClick={handleLogout}
+              className="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600 transition"
+            >
+              Logout
+            </button>
           </div>
         </div>
 
